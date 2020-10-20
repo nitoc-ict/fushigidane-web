@@ -1,8 +1,25 @@
 <html>
     <head>
-        <script src="./index.js"></script>
+        <script> var exports = {}; </script>
     </head>
     <body>
         <h1>ahgoefja;slk</h1>
+        <div>
+            <b>出発先:</b>
+            <input type="text" id="origin" />
+        </div>
+        <div>
+            <b>到着地:</b>
+            <input type="text" id="destination" />
+        </div>
+        <div>
+            <b>経由地</b>
+            <input type="checkbox" id="sea" name="transitpoints" value="sea"> sea
+            <input type="checkbox" id="conveni" name="transitpoints" value="conveniencestore"> コンビニ
+        </div>
+        <div>
+            <input type="button" name="searchRoute" value="検索" id="searchRoute" onclick="window.GetRouteData()">
+        </div>
+        <script type="text/javascript" src="./index.js"></script>
     </body>
 </html>

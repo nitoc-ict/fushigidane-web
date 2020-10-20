@@ -1,5 +1,28 @@
-const sum = (num1: number, num2: number) => {
-    return num1 + num2;
+interface RequestRoute {
+    origin: string;
+    destination: string;
+    isTransitSea: boolean;
+    isTransitConveni: boolean;
 }
 
-console.log(sum(1, 2))
+interface Window {
+    GetRouteData(): void;
+}
+
+window.GetRouteData = () => {
+    const originElem: HTMLInputElement = <HTMLInputElement>document.getElementById('origin');
+    const destinationElem: HTMLInputElement = <HTMLInputElement>document.getElementById('destination');
+    const seaStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('sea');
+    const conveniStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('conveni');
+
+    let reqRoute: RequestRoute = {
+        origin: originElem.value,
+        destination: destinationElem.value,
+        isTransitSea: seaStatus.checked,
+        isTransitConveni: conveniStatus.checked,
+    };
+
+    console.log(reqRoute)
+
+    return reqRoute;
+};

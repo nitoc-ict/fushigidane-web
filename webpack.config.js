@@ -1,6 +1,8 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
+
   entry: {
     index: './src/index.ts',
   },
@@ -9,20 +11,23 @@ module.exports = {
     path: __dirname + '/dist'
   },
 
-  resolve: {
-    extensions:['.ts', '.js']
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+      },
+    ],
   },
+  resolve: {
+    extensions: [
+      '.ts', '.js',
+    ],
+  },
+
   devServer: {
     host: '0.0.0.0',
     port: '4000',
     contentBase: path.join(__dirname, 'dist')
   },
-
-  module: {
-    rules: [
-      {
-        test:/\.ts$/, loader: 'ts-loader'
-      }
-    ]
-  }
 };
