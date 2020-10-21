@@ -6,23 +6,27 @@ interface RequestRoute {
 }
 
 interface Window {
-    GetRouteData(): void;
+//    GetRouteData(): void;
+    Sum(a: number, b: number): void;
 }
 
-window.GetRouteData = () => {
-    const originElem: HTMLInputElement = <HTMLInputElement>document.getElementById('origin');
-    const destinationElem: HTMLInputElement = <HTMLInputElement>document.getElementById('destination');
-    const seaStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('sea');
-    const conveniStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('conveni');
+const GetRouteData = () => {
+        const originElem: HTMLInputElement = <HTMLInputElement>document.getElementById('origin');
+        const destinationElem: HTMLInputElement = <HTMLInputElement>document.getElementById('destination');
+        const seaStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('sea');
+        const conveniStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('conveni');
+        let reqRoute: RequestRoute = {
+            origin: originElem.value,
+            destination: destinationElem.value,
+            isTransitSea: seaStatus.checked,
+            isTransitConveni: conveniStatus.checked,
+        };
 
-    let reqRoute: RequestRoute = {
-        origin: originElem.value,
-        destination: destinationElem.value,
-        isTransitSea: seaStatus.checked,
-        isTransitConveni: conveniStatus.checked,
+        console.log(reqRoute)
+
+        return reqRoute;
     };
 
-    console.log(reqRoute)
-
-    return reqRoute;
-};
+window.Sum = (a: number, b: number) => {
+    console.log(a + b)
+}
