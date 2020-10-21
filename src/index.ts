@@ -1,9 +1,4 @@
-interface RequestRoute {
-    origin: string;
-    destination: string;
-    isTransitSea: boolean;
-    isTransitConveni: boolean;
-}
+import { RequestRoute } from './model'
 
 interface Window {
 //    GetRouteData(): void;
