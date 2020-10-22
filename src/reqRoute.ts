@@ -1,7 +1,8 @@
 import { RequestRoute } from './model'
 
+const AXIOS = require('axios')
 
-const SendRouteRequests = (requestsRoute: RequestRoute) => {
+export const SendRouteRequests = (requestsRoute: RequestRoute) => {
     type SendData = {
         'origin': string,
         'destination': string,
@@ -22,15 +23,12 @@ const SendRouteRequests = (requestsRoute: RequestRoute) => {
         data.scenes.push('sea')
     }
 
-    fetch('https://fushigidane.higashi.dev/route', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
+    AXIOS.post('https://fushigidane.higashi.dev/route', data)
     .then(res => res.json())
     .then((resJSON) => {
-        console.log(resJSON['Object'])
+        console.log(resJSON['Object']);
+    })
+    .catch((error) => {
+        console.log(error);
     });
 }

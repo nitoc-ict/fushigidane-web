@@ -1,11 +1,14 @@
-import { RequestRoute } from './model'
+import { RequestRoute } from './model';
+import { SendRouteRequests } from './reqRoute';
 
-interface Window {
-//    GetRouteData(): void;
-    Sum(a: number, b: number): void;
+declare global {
+    interface Window {
+        GetRouteData(): RequestRoute;
+        Sum(a: number, b: number): void;
+    }
 }
 
-const GetRouteData = () => {
+window.GetRouteData = () => {
         const originElem: HTMLInputElement = <HTMLInputElement>document.getElementById('origin');
         const destinationElem: HTMLInputElement = <HTMLInputElement>document.getElementById('destination');
         const seaStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('sea');
@@ -17,10 +20,12 @@ const GetRouteData = () => {
             isTransitConveni: conveniStatus.checked,
         };
 
-        console.log(reqRoute)
+        console.log(reqRoute);
+
+        SendRouteRequests(reqRoute);
 
         return reqRoute;
-    };
+}
 
 window.Sum = (a: number, b: number) => {
     console.log(a + b)
