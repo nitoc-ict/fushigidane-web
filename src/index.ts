@@ -3,12 +3,11 @@ import { SendRouteRequests } from './reqRoute';
 
 declare global {
     interface Window {
-        GetRouteData(): RequestRoute;
-        Sum(a: number, b: number): void;
+        GetRouteData(): any;
     }
 }
 
-window.GetRouteData = () => {
+window.GetRouteData = async () => {
         const originElem: HTMLInputElement = <HTMLInputElement>document.getElementById('origin');
         const destinationElem: HTMLInputElement = <HTMLInputElement>document.getElementById('destination');
         const seaStatus: HTMLInputElement = <HTMLInputElement>document.getElementById('sea');
@@ -20,13 +19,5 @@ window.GetRouteData = () => {
             isTransitConveni: conveniStatus.checked,
         };
 
-        console.log(reqRoute);
-
-        SendRouteRequests(reqRoute);
-
-        return reqRoute;
-}
-
-window.Sum = (a: number, b: number) => {
-    console.log(a + b)
+        return await SendRouteRequests(reqRoute);
 }

@@ -2,12 +2,14 @@ import { RequestRoute } from './model'
 
 const AXIOS = require('axios')
 
-export const SendRouteRequests = (requestsRoute: RequestRoute) => {
+export const SendRouteRequests = async (requestsRoute: RequestRoute) => {
     type SendData = {
         'origin': string,
         'destination': string,
         'scenes': string[],
     }
+
+    let routeRes: any;
 
     let data: SendData = {
         'origin': requestsRoute.origin,
@@ -23,12 +25,15 @@ export const SendRouteRequests = (requestsRoute: RequestRoute) => {
         data.scenes.push('sea')
     }
 
-    AXIOS.post('https://fushigidane.higashi.dev/route', data)
-    .then(res => res.json())
-    .then((resJSON) => {
-        console.log(resJSON['Object']);
+
+    await AXIOS.post('https://fushigidane.higashi.dev/route', data)
+    .then((response) => {
+        routeRes = response.data
     })
     .catch((error) => {
-        console.log(error);
-    });
+        console.log(error)
+    })
+
+
+    return routeRes;
 }
