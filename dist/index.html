@@ -1,6 +1,8 @@
 <html>
     <head>
         <script> var exports = {}; </script>
+        <script type="module" src="./displaymaps.js"></script>
+        <script type="module" src="./index.js"></script>
     </head>
     <body>
         <h1>ahgoefja;slk</h1>
@@ -18,11 +20,9 @@
             <input type="checkbox" id="conveni" name="transitpoints" value="conveniencestore"> コンビニ
         </div>
         <div>
-            <input type="button" name="searchRoute" value="検索" id="searchRoute" onclick="window.GetRouteData()">
+            <input type="button" name="searchRoute" value="検索" id="searchRoute" onclick="InitMap()">
         </div>
         <div id="maps" style="width:620px; height:400px"></div>
-        <script type="module" src="./index.js"></script>
-        <script type="module" src="./displaymaps.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+        <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyB73TrGi66v9WAYue-MhFSDqgSTn_BmaHI"></script>
     </body>
 </html>
