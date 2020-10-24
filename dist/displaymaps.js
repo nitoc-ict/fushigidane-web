@@ -28,7 +28,6 @@ window.InitMap = () => {
         const directionsService = new google.maps.DirectionsService();
         const directionsRenderer = new google.maps.DirectionsRenderer({
             map: map,
-            preserveViewport: true,
         });
 
         directionsService.route(request, (result, status) => {
