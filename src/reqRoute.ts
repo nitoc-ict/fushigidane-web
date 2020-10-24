@@ -31,8 +31,15 @@ export const SendRouteRequests = async (requestsRoute: RequestRoute) => {
         routeRes = response.data
     })
     .catch((error) => {
-        console.log(error)
-    })
+        console.log(error);
+        if (error.response.status === 400) {
+            alert('リクエストの形式が間違っています');
+        } else if (error.response.status === 500) {
+            alert('サーバーエラーです\n時間をおいて試してください');
+        } else if (error.response.status === 502) {
+            alert('サーバーが停止しています');
+        }
+    });
 
 
     return routeRes;
