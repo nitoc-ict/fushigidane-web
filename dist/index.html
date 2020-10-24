@@ -6,22 +6,23 @@
         <link rel="stylesheet" type="text/css" href="./index.css">
     </head>
     <body>
-        <h1>ahgoefja;slk</h1>
-        <div>
-            <b>出発先:</b>
-            <input type="text" id="origin" />
-        </div>
-        <div>
-            <b>到着地:</b>
-            <input type="text" id="destination" />
-        </div>
-        <div>
-            <b>経由地</b>
-            <input type="checkbox" id="sea" name="transitpoints" value="sea"> sea
-            <input type="checkbox" id="conveni" name="transitpoints" value="conveniencestore"> コンビニ
-        </div>
-        <div>
-            <input type="button" name="searchRoute" value="検索" id="searchRoute" onclick="InitMap()">
+        <h1>Driview</h1>
+        <div id="searchBorder">
+            <!-- <img src="./logo.png" id="logo"/> -->
+            <div id="inputAddress">
+                <p>出発先: <input type="text" id="origin" />
+                   到着地: <input type="text" id="destination" /></p>
+            </div>
+
+            <div id="wayPoints">
+                <p>経由地:
+                <input type="checkbox" id="sea" name="transitpoints" value="sea"> 海
+                <input type="checkbox" id="conveni" name="transitpoints" value="conveniencestore"> コンビニ
+            </p>
+            </div>
+            <div>
+                <input type="button" name="searchRoute" value="検索" id="searchRoute" onclick="InitMap()">
+            </div>
         </div>
         <div id="maps" style="width:620px; height:400px"></div>
         <script src="https://maps.googleapis.com/maps/api/js?&key="></script>
