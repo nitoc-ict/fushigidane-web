@@ -37,10 +37,10 @@ window.InitMap = () => {
             if (status === google.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(result);
                 directionsRenderer.setOptions({
+                    markerOptions: {
+                        icon: 'point.png'
+                    },
                     polylineOptions: {
-                        markerOptions: {
-                            icon: 'point.png'
-                        },
                         strokeColor: '#ec6a6a'
                     }
                 })
