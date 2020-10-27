@@ -16,6 +16,9 @@ window.InitMap = () => {
             destination: new google.maps.LatLng(r[(r.length - 1).toString(10)].Latitude, r[(r.length-1).toString(10)].Longitude),
             travelMode: google.maps.DirectionsTravelMode.DRIVING,
             waypoints: [],
+            avoidFerries: false,
+            avoidHighways: false,
+            avoidTolls: false,
         }
 
         if (r.length > 10) {
@@ -28,12 +31,19 @@ window.InitMap = () => {
         const directionsService = new google.maps.DirectionsService();
         const directionsRenderer = new google.maps.DirectionsRenderer({
             map: map,
-            preserveViewport: true,
         });
 
         directionsService.route(request, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(result);
+                directionsRenderer.setOptions({
+                    markerOptions: {
+                        icon: 'point.png'
+                    },
+                    polylineOptions: {
+                        strokeColor: '#ec6a6a'
+                    }
+                })
             }
         })
     });

@@ -19,5 +19,17 @@ window.GetRouteData = async () => {
             isTransitConveni: conveniStatus.checked,
         };
 
+        if (!reqRoute.isTransitSea && !reqRoute.isTransitConveni) {
+            alert('経由地を選択してください');
+        }
+
+        if (reqRoute.origin.indexOf('沖縄') === -1 && reqRoute.origin.indexOf('okinawa') === -1) {
+            alert('出発地点が沖縄県のものではないか、正しく入力されていません');
+        }
+
+        if (reqRoute.destination.indexOf('okinawa') && reqRoute.destination.indexOf('沖縄') === -1) {
+            alert('到着地点が沖縄県のものではないか、正しく入力されていません');
+        }
+
         return await SendRouteRequests(reqRoute);
 }
